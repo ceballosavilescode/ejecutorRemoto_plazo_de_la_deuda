@@ -4,6 +4,7 @@ import glob
 import sqlalchemy
 
 # Mostrar mensaje de registro con el usuario
+print("ejecutorRemoto_plazo_de_la_deuda")
 print(f"El usuario se registró como 1.9: {usuario}")
 
 # Asignar la variable usuario a usuario1
