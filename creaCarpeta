@@ -1,4 +1,15 @@
+import sqlalchemy
+import pandas as pd
+import glob
+import sqlite3
+from datetime import datetime
+from datetime import date
+import xlrd
+import csv
 import os
+import numpy as np
+import datetime
+
 carpeta = "plazodeladeuda"
 if not os.path.exists(carpeta):
   os.makedirs(carpeta)
