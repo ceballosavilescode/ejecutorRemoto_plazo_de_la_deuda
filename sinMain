@@ -1,0 +1,38 @@
+import sqlalchemy
+import pandas as pd
+import glob
+import sqlite3
+from datetime import datetime
+from datetime import date
+import xlrd
+import csv
+import os
+import numpy as np
+import datetime
+
+class PlazoDeLaDeuda(object):
+
+	def __init__(self):
+
+	
+	
+		carpeta = "plazodeladeuda"
+		if not os.path.exists(carpeta):
+		  os.makedirs(carpeta)
+		  print(f'Carpeta "{carpeta}" creada.')
+		else:
+		  print(f'La carpeta "{carpeta}" ya existe.')
+		
+		
+		# Ruta absoluta o relativa correcta
+		ruta_archivos = os.path.join(os.getcwd(), "plazodeladeuda", "SB_CarteraFinancieraContable*.xls")
+		print(ruta_archivos)
+		contable = pd.DataFrame()
+		
+		# Leer archivos dentro de plazodeladeuda
+		for f in glob.glob(ruta_archivos, recursive=True):
+		  print('Procesando  : ', f)
+		  df = pd.read_excel(f, skiprows=10, header=0)
+		  contable = pd.concat([contable, df], ignore_index=True)  # ✅ Correct
+		
+		print(contable)
