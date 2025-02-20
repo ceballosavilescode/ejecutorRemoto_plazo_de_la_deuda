@@ -1,11 +1,57 @@
+#from lib.database  import Database
+import sqlalchemy
+import pandas as pd
+import glob
+import sqlite3
+from datetime import datetime
+from datetime import date
+import xlrd
+import csv
 import os
+import numpy as np
+import datetime
 
 
+class PlazoDeLaDeuda(object):
 
-print(" _________________ nuevo archivo _________________ ")
-carpeta = "plazodeladeuda"
-if not os.path.exists(carpeta):
-    os.makedirs(carpeta)
-    print(f'Carpeta "{carpeta}" creada.')
-else:
-    print(f'La carpeta "{carpeta}" ya existe.')
+    def normalizeDate(self, dateString):
+        return dateString.replace(['(\d{2})\/(\d{2})\/(\d{4})'], ['\g<1>-\g<2>-\g<3>'], regex=True)
+
+    def normalizeFactura(self, string):
+        string	= [w.replace('.0', '' ) for w in string ]
+        return string
+
+    def normalizeRut(self, string):
+        string	= [w.replace(',00', '' ) for w in string ]
+        string	= [w.replace(' ', '' ) for w in string ]
+        string	= [w.replace('$', '' ) for w in string ]
+        string	= [w.replace('.', '' ) for w in string ]
+        string	= [w.replace('(', '-' ) for w in string ]
+        string	= [w.replace(')', '' ) for w in string ]
+        return string
+
+    def normalizeNumeric(self, string):
+        return pd.to_numeric(string)
+
+    def normalizeFolio(self, string):
+        string	= [w.replace('.0', '' ) for w in string ]
+        return string
+
+
+    def __init__(self):
+
+        # Ruta absoluta o relativa correcta
+        ruta_archivos = os.path.join(os.getcwd(), "plazodeladeuda", "SB_CarteraFinancieraContable*.xls")
+        print(ruta_archivos)
+        contable = pd.DataFrame()
+
+        # Leer archivos dentro de plazodeladeuda
+        for f in glob.glob(ruta_archivos, recursive=True):
+            print('Procesando  : ', f)
+            df = pd.read_excel(f, skiprows=10, header=0)
+            contable = pd.concat([contable, df], ignore_index=True)  # ✅ Correct
+
+        print(contable)
+
+if __name__ == '__main__':
+    PlazoDeLaDeuda()
