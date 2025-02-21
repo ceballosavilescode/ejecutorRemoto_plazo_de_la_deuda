@@ -12,30 +12,46 @@ import datetime
 
 class PlazoDeLaDeuda(object):
 
-	def __init__(self, usuario):
-			
-	
-		print( "usuario", usuario)
-		carpeta = "plazodeladeuda"
-		if not os.path.exists(carpeta):
-		  os.makedirs(carpeta)
-		  print(f'Carpeta "{carpeta}" creada.')
+	def __init__(self, variables):
+
+		print("✅ Acceso permitido")
+
+		carpta_input = "input/plazodeladeuda"
+		if not os.path.exists(carpta_input):
+			os.makedirs(carpta_input)
+			print(f'carpta_input "{carpta_input}" creada.')
 		else:
-		  print(f'La carpeta "{carpeta}" ya existe.')
-		
-		
-		# Ruta absoluta o relativa correcta
+			print(f'La carpta_input "{carpta_input}" ya existe.')
+
 		ruta_archivos = os.path.join(os.getcwd(), "plazodeladeuda", "SB_CarteraFinancieraContable*.xls")
-		print(ruta_archivos)
+		#print(ruta_archivos)
 		contable = pd.DataFrame()
 		
-		# Leer archivos dentro de plazodeladeuda
 		for f in glob.glob(ruta_archivos, recursive=True):
-		  print('Procesando  : ', f)
-		  df = pd.read_excel(f, skiprows=10, header=0)
-		  contable = pd.concat([contable, df], ignore_index=True)  # ✅ Correct
-		
+			print('Procesando  : ', f)
+			df = pd.read_excel(f, skiprows=10, header=0)
+			contable = pd.concat([contable, df], ignore_index=True)  # ✅ Correct
+
 		print(contable)
 
+
+
+		# Ensure output directory exists
+		output_dir = "output/"
+		os.makedirs(output_dir, exist_ok=True)
+
+		# Get today's date
+		today = date.today()
+		filename = today.strftime(output_dir + "%d-%b-%Y") + " - Ejecutor Remoto.xlsx"
+
+		# Create Excel writer
+		writer = pd.ExcelWriter(filename, engine='xlsxwriter')
+
+		# Write DataFrames to Excel
+		contable.to_excel(writer, sheet_name='contable', index=False)
+		writer.close()
+
+
+
 if __name__ == '__main__':
-	PlazoDeLaDeuda(usuario)
+	PlazoDeLaDeuda(variables)
