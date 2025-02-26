@@ -56,7 +56,7 @@ class PlazoDeLaDeuda(object):
 			df = pd.read_excel(f, skiprows=10, header=0)
 			contable = pd.concat([contable, df], ignore_index=True)  # ✅ Correct
 
-		print(contable)
+		# print(contable)
 
 		contable.rename(columns={'Número documento ':'Factura'}, inplace=True)
 
@@ -164,7 +164,7 @@ class PlazoDeLaDeuda(object):
 			df = pd.read_excel(f )
 			acepta = pd.concat([acepta, df], ignore_index=True)  # ✅ Correct
 
-		print(acepta)
+		# print(acepta)
 
 		acepta['emisor'] 	= self.normalizeRut(acepta['emisor'])
 		acepta['tipo']		= acepta.drop( acepta[acepta['tipo'] == 52 ].index , inplace=True )
