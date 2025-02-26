@@ -313,7 +313,7 @@ class PlazoDeLaDeuda(object):
 		contable_limpio.to_excel(writer, sheet_name='contable_limpio', index=False)
 		ultimo.to_excel(writer, sheet_name='ultimo', index=False)
 		writer.close()
-
+		print("✅ FIN")
 
 
 if __name__ == '__main__':
