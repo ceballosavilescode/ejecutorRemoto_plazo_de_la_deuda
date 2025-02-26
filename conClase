@@ -309,9 +309,9 @@ class PlazoDeLaDeuda(object):
 		today = date.today()
 		filename = today.strftime(output_dir + "%d-%b-%Y") + " - Ejecutor Remoto.xlsx"
 		writer = pd.ExcelWriter(filename, engine='xlsxwriter')
-		contable.to_excel(writer, sheet_name='contable', index=False)
-		contable_limpio.to_excel(writer, sheet_name='contable_limpio', index=False)
-		ultimo.to_excel(writer, sheet_name='ultimo', index=False)
+		# contable.to_excel(writer, sheet_name='contable', index=False)
+		# contable_limpio.to_excel(writer, sheet_name='contable_limpio', index=False)
+		ultimo.to_excel(writer, sheet_name='Plazo De La Deuda', index=False)
 		writer.close()
 		print("✅ FIN")
 
