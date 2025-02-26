@@ -307,7 +307,7 @@ class PlazoDeLaDeuda(object):
 		os.makedirs(output_dir, exist_ok=True)
 
 		today = date.today()
-		filename = today.strftime(output_dir + "%d-%b-%Y") + " - Ejecutor Remoto.xlsx"
+		filename = today.strftime(output_dir + "%d-%b-%Y") + " - Plazo de la Deuda.xlsx"
 		writer = pd.ExcelWriter(filename, engine='xlsxwriter')
 		# contable.to_excel(writer, sheet_name='contable', index=False)
 		# contable_limpio.to_excel(writer, sheet_name='contable_limpio', index=False)
