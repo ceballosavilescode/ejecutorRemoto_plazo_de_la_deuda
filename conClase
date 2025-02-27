@@ -306,12 +306,47 @@ class PlazoDeLaDeuda(object):
 		output_dir = "output/"
 		os.makedirs(output_dir, exist_ok=True)
 
+
+		# Obtener la fecha actual
 		today = date.today()
 		filename = today.strftime(output_dir + "%d-%b-%Y") + " - Plazo de la Deuda.xlsx"
+
+		# Crear un ExcelWriter con xlsxwriter como motor
 		writer = pd.ExcelWriter(filename, engine='xlsxwriter')
+
+		# Escribir los DataFrames en las hojas correspondientes
 		# contable.to_excel(writer, sheet_name='contable', index=False)
 		# contable_limpio.to_excel(writer, sheet_name='contable_limpio', index=False)
-		ultimo.to_excel(writer, sheet_name='Plazo de la Deuda', index=False)
+		ultimo.to_excel(writer, sheet_name='ultimo', index=False)
+
+		# Obtener el libro y la hoja de trabajo
+		workbook = writer.book
+		worksheet = writer.sheets['ultimo']
+
+		# Congelar la primera fila (encabezados)
+		worksheet.freeze_panes(1, 0)  # Congela la fila 1 (encabezados) y ninguna columna
+
+		# Crear un formato con color de fondo verde suave
+		green_format = workbook.add_format({'bg_color': '#C6EFCE'})  # Código HEX para verde suave
+
+		# Determinar la última fila con datos en la columna H
+		# La columna H corresponde al índice 7 (0-based)
+		last_row = len(ultimo)  # Número de filas en el DataFrame
+		start_row = 1  # Fila 2 en Excel (0-based sería 1)
+
+		# Aplicar el formato a la columna H desde la fila 2 hasta la última fila
+		worksheet.set_column(7, 7, None, green_format)  # Aplicar formato a toda la columna H
+		for row in range(start_row, last_row + 1):  # Iterar desde la fila 2 hasta la última fila
+			worksheet.write(row, 7, ultimo.iloc[row - 1, 7], green_format)  # Aplicar formato a cada celda
+
+		# Ajustar el ancho de las columnas al contenido
+		for i, col in enumerate(ultimo.columns):
+			# Encontrar la longitud máxima del contenido en la columna
+			max_len = max(ultimo[col].astype(str).map(len).max(), len(col))
+			# Ajustar el ancho de la columna
+			worksheet.set_column(i, i, max_len)
+
+		# Guardar y cerrar el archivo
 		writer.close()
 		print("✅ FIN")
 
