@@ -302,6 +302,7 @@ class PlazoDeLaDeuda(object):
 		"
 		ultimo = pd.read_sql_query(consulta, cnx)
 
+		del ultimo['unico']
 
 		output_dir = "output/"
 		os.makedirs(output_dir, exist_ok=True)
@@ -317,11 +318,11 @@ class PlazoDeLaDeuda(object):
 		# Escribir los DataFrames en las hojas correspondientes
 		# contable.to_excel(writer, sheet_name='contable', index=False)
 		# contable_limpio.to_excel(writer, sheet_name='contable_limpio', index=False)
-		ultimo.to_excel(writer, sheet_name='ultimo', index=False)
+		ultimo.to_excel(writer, sheet_name='Deuda', index=False)
 
 		# Obtener el libro y la hoja de trabajo
 		workbook = writer.book
-		worksheet = writer.sheets['ultimo']
+		worksheet = writer.sheets['Deuda']
 
 		# Congelar la primera fila (encabezados)
 		worksheet.freeze_panes(1, 0)  # Congela la fila 1 (encabezados) y ninguna columna
@@ -335,9 +336,9 @@ class PlazoDeLaDeuda(object):
 		start_row = 1  # Fila 2 en Excel (0-based sería 1)
 
 		# Aplicar el formato a la columna H desde la fila 2 hasta la última fila
-		worksheet.set_column(7, 7, None, green_format)  # Aplicar formato a toda la columna H
+		worksheet.set_column(6, 6, None, green_format)  # Aplicar formato a toda la columna H
 		for row in range(start_row, last_row + 1):  # Iterar desde la fila 2 hasta la última fila
-			worksheet.write(row, 7, ultimo.iloc[row - 1, 7], green_format)  # Aplicar formato a cada celda
+			worksheet.write(row, 6, ultimo.iloc[row - 1, 6], green_format)  # Aplicar formato a cada celda
 
 		# Ajustar el ancho de las columnas al contenido
 		for i, col in enumerate(ultimo.columns):
