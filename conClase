@@ -370,10 +370,9 @@ class PlazoDeLaDeuda(object):
 
 		Para seguir recibiendo el informe de plazo de deuda, por favor
 		contacta directamente a Héctor Ceballos (autor del sistema):
-			• Correo: hector@tudominio.cl
-			• Teléfono: +56 9 XXXX XXXX
+			• Correo: ceballosaviles@gmail.com
+			• Teléfono: +56 9 51094738
 
-		Disponible nuevamente desde el {fin_pausa.strftime('%d de junio de %Y')}.
 		"""
 
 		# Crear DataFrame con una sola celda
