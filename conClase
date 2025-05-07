@@ -41,6 +41,10 @@ class PlazoDeLaDeuda(object):
 
 		print("✅ Acceso permitido", variables)
 
+		"""
+
+
+
 		carpta_input = "input/plazodeladeuda"
 		if not os.path.exists(carpta_input):
 			os.makedirs(carpta_input)
@@ -350,6 +354,45 @@ class PlazoDeLaDeuda(object):
 		# Guardar y cerrar el archivo
 		writer.close()
 		print("✅ FIN")
+		"""
+
+
+
+
+		# Texto del aviso
+		aviso = f"""⚠️  Este reporte se encuentra temporalmente inhabilitado ⚠️
+
+		Para seguir recibiendo el informe de plazo de deuda, por favor
+		contacta directamente a Héctor Ceballos (autor del sistema):
+			• Correo: hector@tudominio.cl
+			• Teléfono: +56 9 XXXX XXXX
+
+
+		"""
+
+		# Crear DataFrame con una sola celda
+		df = pd.DataFrame({"Aviso": [aviso]})
+
+		# Ruta del archivo
+		#output_path = Path("/mnt/data/Reporte_Pausado.xlsx")
+
+		# Escribir en Excel
+		with pd.ExcelWriter(output_dir, engine="xlsxwriter") as writer:
+			df.to_excel(writer, sheet_name="Hoja1", index=False, header=False)
+			# Ajustar formato: ancho de columna y ajuste de texto
+			worksheet = writer.sheets["Hoja1"]
+			worksheet.set_column("A:A", 90)
+			wrap_format = writer.book.add_format({"text_wrap": True, "valign": "top"})
+			worksheet.set_row(0, 200, wrap_format)
+
+		#output_path
+
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
