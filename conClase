@@ -360,6 +360,10 @@ class PlazoDeLaDeuda(object):
 		from datetime import date
 		from pathlib import Path
 
+
+		output_dir = "output/"
+		os.makedirs(output_dir, exist_ok=True)
+
 		# Texto del aviso
 		fin_pausa = date(2025, 6, 23)
 		aviso = f"""⚠️  Este reporte se encuentra temporalmente inhabilitado ⚠️
@@ -376,7 +380,7 @@ class PlazoDeLaDeuda(object):
 		df = pd.DataFrame({"Aviso": [aviso]})
 
 		# Ruta del archivo
-		output_path = Path("output/Reporte_Pausado.xlsx")
+		output_path = Path(output_dir+"Reporte_Pausado.xlsx")
 
 		# Escribir en Excel
 		with pd.ExcelWriter(output_path, engine="xlsxwriter") as writer:
