@@ -380,7 +380,10 @@ class PlazoDeLaDeuda(object):
 		df = pd.DataFrame({"Aviso": [aviso]})
 
 		# Ruta del archivo
-		output_path = Path(output_dir+"Reporte_Pausado.xlsx")
+		#output_path = Path(output_dir+"Reporte_Pausado.xlsx")
+
+		today = date.today()
+		#filename = today.strftime(output_dir + "%d-%b-%Y") + " - Plazo de la Deuda.xlsx"
 
 		# Escribir en Excel
 		with pd.ExcelWriter(output_path, engine="xlsxwriter") as writer:
