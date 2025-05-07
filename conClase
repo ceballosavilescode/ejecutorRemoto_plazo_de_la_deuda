@@ -366,15 +366,47 @@ class PlazoDeLaDeuda(object):
 
 		# Texto del aviso
 		fin_pausa = date(2025, 6, 23)
-		aviso = f"""⚠️  Este reporte se encuentra temporalmente inhabilitado ⚠️
+		aviso = f"""⚠️  Este reporte se encuentra temporalmente suspendido. ⚠️
 
-		Para seguir recibiendo el informe de plazo de deuda, por favor
-		contacta directamente a Héctor Ceballos (autor del sistema):
-			• Correo: ceballosaviles@gmail.com
-			• Teléfono: +56 9 51094738
+ 		El servicio se reanudará automáticamente el 24‑05‑2025
+			• Para incidencias técnicas urgentes escribe a: ceballosaviles@gmail.com 
+			• Teléfono: +56 9 51094738
 
 
-		plain<br> ⚠️ INFORME SUSPENDIDO (08‑05 → 23‑06‑2025)⚠️<br><br> El servicio se reanudará automáticamente el 24‑06‑2025.<br><br> Para incidencias técnicas urgentes escribe a: soporte@institucion.cl<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 		"""
