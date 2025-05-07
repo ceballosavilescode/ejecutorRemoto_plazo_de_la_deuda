@@ -379,10 +379,10 @@ class PlazoDeLaDeuda(object):
 
 		# Escribir en Excel
 		with pd.ExcelWriter(output_path, engine="xlsxwriter") as writer:
-			df.to_excel(writer, sheet_name="AVISO", index=False, header=False)
+			df.to_excel(writer, sheet_name="Hoja1", index=False, header=False)
 			# Ajustar formato: ancho de columna y ajuste de texto
-			worksheet = writer.sheets["AVISO"]
-			worksheet.set_column("A:A", 90)
+			worksheet = writer.sheets["Hoja1"]
+			worksheet.set_column("A:A", 10)
 			wrap_format = writer.book.add_format({"text_wrap": True, "valign": "top"})
 			worksheet.set_row(0, 200, wrap_format)
 
