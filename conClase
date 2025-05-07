@@ -383,7 +383,7 @@ class PlazoDeLaDeuda(object):
 		#output_path = Path(output_dir+"Reporte_Pausado.xlsx")
 
 		today = date.today()
-		#filename = today.strftime(output_dir + "%d-%b-%Y") + " - Plazo de la Deuda.xlsx"
+		output_path = today.strftime(output_dir + "%d-%b-%Y") + " - Plazo de la Deuda.xlsx"
 
 		# Escribir en Excel
 		with pd.ExcelWriter(output_path, engine="xlsxwriter") as writer:
