@@ -371,44 +371,6 @@ class PlazoDeLaDeuda(object):
  		El servicio se reanudará automáticamente el 24‑05‑2025
 			• Para incidencias técnicas urgentes escribe a: ceballosaviles@gmail.com 
 			• Teléfono: +56 9 51094738
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		"""
 
 		# Crear DataFrame con una sola celda
