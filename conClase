@@ -365,7 +365,6 @@ class PlazoDeLaDeuda(object):
 		os.makedirs(output_dir, exist_ok=True)
 
 		# Texto del aviso
-		fin_pausa = date(2025, 6, 23)
 		aviso = f"""⚠️  Este reporte se encuentra temporalmente suspendido. ⚠️
 
  		El servicio se reanudará automáticamente el 24‑05‑2025
