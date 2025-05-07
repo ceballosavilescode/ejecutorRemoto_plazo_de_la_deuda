@@ -384,7 +384,7 @@ class PlazoDeLaDeuda(object):
 			worksheet = writer.sheets["Hoja1"]
 			worksheet.set_column("A:A", 10)
 			wrap_format = writer.book.add_format({"text_wrap": True, "valign": "top"})
-			worksheet.set_row(0, 200, wrap_format)
+			worksheet.set_row(0, 100, wrap_format)
 
 		output_path
 
