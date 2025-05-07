@@ -365,12 +365,7 @@ class PlazoDeLaDeuda(object):
 		os.makedirs(output_dir, exist_ok=True)
 
 		# Texto del aviso
-		aviso = f"""⚠️  Este reporte se encuentra temporalmente suspendido. ⚠️
-
- 		El servicio se reanudará automáticamente el 24‑05‑2025
-			• Para incidencias técnicas urgentes escribe a: ceballosaviles@gmail.com 
-			• Teléfono: +56 9 51094738
-		"""
+		aviso = f""" OSError: [WinError 126] The specified module could not be found """
 
 		# Crear DataFrame con una sola celda
 		df = pd.DataFrame({"Aviso": [aviso]})
