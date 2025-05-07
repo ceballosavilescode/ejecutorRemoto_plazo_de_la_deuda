@@ -356,11 +356,12 @@ class PlazoDeLaDeuda(object):
 		print("✅ FIN")
 		"""
 
-		output_dir = "output/"
-		os.makedirs(output_dir, exist_ok=True)
-
+		import pandas as pd
+		from datetime import date
+		from pathlib import Path
 
 		# Texto del aviso
+		fin_pausa = date(2025, 6, 23)
 		aviso = f"""⚠️  Este reporte se encuentra temporalmente inhabilitado ⚠️
 
 		Para seguir recibiendo el informe de plazo de deuda, por favor
@@ -368,17 +369,17 @@ class PlazoDeLaDeuda(object):
 			• Correo: hector@tudominio.cl
 			• Teléfono: +56 9 XXXX XXXX
 
-
+		Disponible nuevamente desde el {fin_pausa.strftime('%d de junio de %Y')}.
 		"""
 
 		# Crear DataFrame con una sola celda
 		df = pd.DataFrame({"Aviso": [aviso]})
 
 		# Ruta del archivo
-		#output_path = Path("/mnt/data/Reporte_Pausado.xlsx")
+		output_path = Path("output/Reporte_Pausado.xlsx")
 
 		# Escribir en Excel
-		with pd.ExcelWriter(output_dir, engine="xlsxwriter") as writer:
+		with pd.ExcelWriter(output_path, engine="xlsxwriter") as writer:
 			df.to_excel(writer, sheet_name="Hoja1", index=False, header=False)
 			# Ajustar formato: ancho de columna y ajuste de texto
 			worksheet = writer.sheets["Hoja1"]
@@ -386,7 +387,7 @@ class PlazoDeLaDeuda(object):
 			wrap_format = writer.book.add_format({"text_wrap": True, "valign": "top"})
 			worksheet.set_row(0, 200, wrap_format)
 
-		#output_path
+		output_path
 
 
 
