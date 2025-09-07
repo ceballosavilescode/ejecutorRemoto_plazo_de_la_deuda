@@ -47,15 +47,6 @@ class PlazoDeLaDeuda(object):
 			os._exit(1)    # cierra la consola de inmediato
 
 		print("✅ Contraseña correcta. Acceso permitido.\n")
-
-		carpta_input = "input/plazodeladeuda"
-		if not os.path.exists(carpta_input):
-			os.makedirs(carpta_input)
-			#print(f'carpta_input "{carpta_input}" creada.')
-		else:
-			pass
-			#print(f'La carpta_input "{carpta_input}" ya existe.')
-
 		ruta_archivos = os.path.join(os.getcwd(), "plazodeladeuda", "SB_CarteraFinancieraContable*.xls")
 		#print(ruta_archivos)
 		contable = pd.DataFrame()
