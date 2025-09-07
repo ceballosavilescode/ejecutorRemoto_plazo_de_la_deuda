@@ -298,8 +298,6 @@ class PlazoDeLaDeuda(object):
 			HAVING contable_limpio.'Cuenta Contable' LIKE '%' and [current_year]<>0 \
 			ORDER BY 'Cuenta Contable' asc)c \
 			LEFT JOIN(SELECT DISTINCT(acepta.unico), acepta.* FROM acepta GROUP BY unico)a ON c.unico = a.unico \
-		WHERE \
-			c.'Area Transaccional' = '2111014 Dirección Regional Metropolitana' \
 		"
 		ultimo = pd.read_sql_query(consulta, cnx)
 
