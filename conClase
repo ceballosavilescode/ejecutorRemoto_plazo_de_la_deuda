@@ -15,12 +15,12 @@ import sys
 class PlazoDeLaDeuda(object):
 
 	def escribir_lento(texto, delay=0.1):
-	    """Imprime texto como si estuviera siendo tecleado"""
-	    for char in texto:
-	        sys.stdout.write(char)
-	        sys.stdout.flush()
-	        time.sleep(delay)
-	    sys.stdout.write("\n")
+		"""Imprime texto como si estuviera siendo tecleado"""
+		for char in texto:
+			sys.stdout.write(char)
+			sys.stdout.flush()
+			time.sleep(delay)
+		sys.stdout.write("\n")
 
 	def normalizeDate(self, dateString):
 		return dateString.replace(['(\d{2})\/(\d{2})\/(\d{4})'], ['\g<1>-\g<2>-\g<3>'], regex=True)
@@ -54,28 +54,28 @@ class PlazoDeLaDeuda(object):
 			time.sleep(2)  # pequeña pausa para mostrar el mensaje
 			os._exit(1)    # cierra la consola de inmediato
 
-		print("✅ Contraseña correcta. Acceso permitido.\n")
+			print("✅ Contraseña correcta. Acceso permitido.\n")
 
-		#======
-        usuario_pc = os.getlogin()
-        time.sleep(3)
+			#======
+			usuario_pc = os.getlogin()
+			time.sleep(3)
 
-        escribir_lento("Wake up " + usuario_pc, delay=0.08)
-        time.sleep(5)
-        os.system("cls" if os.name == "nt" else "clear")
+			escribir_lento("Wake up " + usuario_pc, delay=0.08)
+			time.sleep(5)
+			os.system("cls" if os.name == "nt" else "clear")
 
-        escribir_lento("The Matrix has you...", delay=0.08)
-        time.sleep(5)
-        os.system("cls" if os.name == "nt" else "clear")
+			escribir_lento("The Matrix has you...", delay=0.08)
+			time.sleep(5)
+			os.system("cls" if os.name == "nt" else "clear")
 
-        escribir_lento("Follow the white rabbit...", delay=0.08)
-        time.sleep(5)
-        os.system("cls" if os.name == "nt" else "clear")
+			escribir_lento("Follow the white rabbit...", delay=0.08)
+			time.sleep(5)
+			os.system("cls" if os.name == "nt" else "clear")
 
-        escribir_lento("Knock Knock " + usuario_pc, delay=0.08)
-        time.sleep(5)
-        os.system("cls" if os.name == "nt" else "clear")
-		#======
+			escribir_lento("Knock Knock " + usuario_pc, delay=0.08)
+			time.sleep(5)
+			os.system("cls" if os.name == "nt" else "clear")
+			#======
 
 		ruta_archivos = os.path.join(os.getcwd(), "plazodeladeuda", "SB_CarteraFinancieraContable*.xls")
 		#print(ruta_archivos)
