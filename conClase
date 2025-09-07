@@ -54,11 +54,11 @@ class PlazoDeLaDeuda(object):
 			time.sleep(2)  # pequeña pausa para mostrar el mensaje
 			os._exit(1)    # cierra la consola de inmediato
 
-			print("✅ Contraseña correcta. Acceso permitido.\n")
+		print("✅ Contraseña correcta. Acceso permitido.\n")
 
 
 		usuario_pc = os.getlogin()
-		time.sleep(3)
+		time.sleep(1)
 
 		escribir_lento("Wake up " + usuario_pc, delay=0.08)
 		time.sleep(5)
