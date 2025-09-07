@@ -9,6 +9,7 @@ import csv
 import os
 import numpy as np
 import datetime
+import time
 
 class PlazoDeLaDeuda(object):
 
@@ -37,26 +38,29 @@ class PlazoDeLaDeuda(object):
 		return string
 
 
-	def __init__(self, variables):
+	def __init__(self):
 
-		print("✅ Acceso permitido", variables)
+		pwd = input("🔑 Ingrese la contraseña: ")
+		if pwd != "hector":
+			print("❌ Acceso denegado")
+			time.sleep(2)  # pequeña pausa para mostrar el mensaje
+			os._exit(1)    # cierra la consola de inmediato
 
-		"""
-
-
+		print("✅ Contraseña correcta. Acceso permitido.\n")
 
 		carpta_input = "input/plazodeladeuda"
 		if not os.path.exists(carpta_input):
 			os.makedirs(carpta_input)
-			print(f'carpta_input "{carpta_input}" creada.')
+			#print(f'carpta_input "{carpta_input}" creada.')
 		else:
-			print(f'La carpta_input "{carpta_input}" ya existe.')
+			pass
+			#print(f'La carpta_input "{carpta_input}" ya existe.')
 
 		ruta_archivos = os.path.join(os.getcwd(), "plazodeladeuda", "SB_CarteraFinancieraContable*.xls")
 		#print(ruta_archivos)
 		contable = pd.DataFrame()
 		for f in glob.glob(ruta_archivos, recursive=True):
-			print('Procesando  : ', f)
+			#print('Procesando  : ', f)
 			df = pd.read_excel(f, skiprows=10, header=0)
 			contable = pd.concat([contable, df], ignore_index=True)  # ✅ Correct
 
@@ -164,7 +168,7 @@ class PlazoDeLaDeuda(object):
 		#print(ruta_archivos)
 		acepta = pd.DataFrame()
 		for f in glob.glob(ruta_archivos, recursive=True):
-			print('Procesando  : ', f)
+			#print('Procesando  : ', f)
 			df = pd.read_excel(f )
 			acepta = pd.concat([acepta, df], ignore_index=True)  # ✅ Correct
 
@@ -303,6 +307,8 @@ class PlazoDeLaDeuda(object):
 			HAVING contable_limpio.'Cuenta Contable' LIKE '%' and [current_year]<>0 \
 			ORDER BY 'Cuenta Contable' asc)c \
 			LEFT JOIN(SELECT DISTINCT(acepta.unico), acepta.* FROM acepta GROUP BY unico)a ON c.unico = a.unico \
+		WHERE \
+			c.'Area Transaccional' = '2111014 Dirección Regional Metropolitana' \
 		"
 		ultimo = pd.read_sql_query(consulta, cnx)
 
@@ -354,47 +360,6 @@ class PlazoDeLaDeuda(object):
 		# Guardar y cerrar el archivo
 		writer.close()
 		print("✅ FIN")
-		"""
-
-		import pandas as pd
-		from datetime import date
-		from pathlib import Path
-
-
-		output_dir = "output/"
-		os.makedirs(output_dir, exist_ok=True)
-
-		# Texto del aviso
-		aviso = f""" OSError: [WinError 126] The specified module could not be found """
-
-		# Crear DataFrame con una sola celda
-		df = pd.DataFrame({"Aviso": [aviso]})
-
-		# Ruta del archivo
-		#output_path = Path(output_dir+"Reporte_Pausado.xlsx")
-
-		today = date.today()
-		output_path = Path(today.strftime(output_dir + "%d-%b-%Y") + " - Plazo de la Deuda.xlsx")
-
-
-		# Escribir en Excel
-		with pd.ExcelWriter(output_path, engine="xlsxwriter") as writer:
-			df.to_excel(writer, sheet_name="Hoja1", index=False, header=False)
-			# Ajustar formato: ancho de columna y ajuste de texto
-			worksheet = writer.sheets["Hoja1"]
-			worksheet.set_column("A:A", 10)
-			wrap_format = writer.book.add_format({"text_wrap": True, "valign": "top"})
-			worksheet.set_row(0, 100, wrap_format)
-
-		output_path
-
-
-
-
-
-
-
-
 
 if __name__ == '__main__':
-	PlazoDeLaDeuda(variables)
+	PlazoDeLaDeuda()
