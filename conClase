@@ -41,7 +41,7 @@ class PlazoDeLaDeuda(object):
 	def __init__(self):
 
 		pwd = input("🔑 Ingrese la contraseña: ")
-		if pwd != "hector":
+		if pwd != "1":
 			print("❌ Acceso denegado")
 			time.sleep(2)  # pequeña pausa para mostrar el mensaje
 			os._exit(1)    # cierra la consola de inmediato
