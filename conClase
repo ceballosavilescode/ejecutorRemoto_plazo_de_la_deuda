@@ -137,7 +137,7 @@ class PlazoDeLaDeuda(object):
 		contable_limpio['Fecha'] = ''
 		contable_limpio['Dias'] = ''
 		#contable_limpio['Intervalo'] = '"=SI(J2<=30;"1 Hasta 30 días ";SI(Y(J2>=31;J2<=45);"2 Entre 31 y 45 días";SI(Y(J2>=46;J2<=60);"3 Entre 46 y 60 días";SI(Y(J2>=61;J2<=90);"4 Entre 61 y 90 días";SI(Y(J2>=91;J2<=120);"5 Entre 91 y 120 días";SI(Y(J2>=120;J2<=150);"6 Entre 121 y 150 días"; SI((J2>=150);"7 Más de 150 días" )))))))"'
-		contable_limpio['Intervalo'] = '"=SI(I2<=30,"1 Hasta 30 días ",SI(Y(I2>=31,I2<=45),"2 Entre 31 y 45 días",SI(Y(I2>=46,I2<=60),"3 Entre 46 y 60 días",SI(Y(I2>=61,I2<=90),"4 Entre 61 y 90 días",SI(Y(I2>=91,I2<=120),"5 Entre 91 y 120 días",SI(Y(I2>=120,I2<=150),"6 Entre 121 y 150 días", SI((I2>=150),"7 Más de 150 días" )))))))"'
+		contable_limpio['Intervalo'] = '"=SI(I2<=30;"1 Hasta 30 días ";SI(Y(I2>=31;I2<=45);"2 Entre 31 y 45 días";SI(Y(I2>=46;I2<=60);"3 Entre 46 y 60 días";SI(Y(I2>=61;I2<=90);"4 Entre 61 y 90 días";SI(Y(I2>=91;I2<=120);"5 Entre 91 y 120 días";SI(Y(I2>=120;I2<=150);"6 Entre 121 y 150 días"; SI((I2>=150);"7 Más de 150 días" )))))))"'
 
 		metadata = sqlalchemy.MetaData()
 		engine = sqlalchemy.create_engine('sqlite:///database.db', echo=False)
