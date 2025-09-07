@@ -56,7 +56,7 @@ class PlazoDeLaDeuda(object):
 
 			print("✅ Contraseña correcta. Acceso permitido.\n")
 
-			#======
+			#======--
 			usuario_pc = os.getlogin()
 			time.sleep(3)
 
@@ -75,7 +75,7 @@ class PlazoDeLaDeuda(object):
 			escribir_lento("Knock Knock " + usuario_pc, delay=0.08)
 			time.sleep(5)
 			os.system("cls" if os.name == "nt" else "clear")
-			#======
+			#======--
 
 		ruta_archivos = os.path.join(os.getcwd(), "plazodeladeuda", "SB_CarteraFinancieraContable*.xls")
 		#print(ruta_archivos)
