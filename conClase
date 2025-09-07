@@ -60,19 +60,19 @@ class PlazoDeLaDeuda(object):
 		usuario_pc = os.getlogin()
 		time.sleep(1)
 
-		escribir_lento("Wake up " + usuario_pc, delay=0.08)
+		self.escribir_lento("Wake up " + usuario_pc, delay=0.08)
 		time.sleep(5)
 		os.system("cls" if os.name == "nt" else "clear")
 
-		escribir_lento("The Matrix has you...", delay=0.08)
+		self.escribir_lento("The Matrix has you...", delay=0.08)
 		time.sleep(5)
 		os.system("cls" if os.name == "nt" else "clear")
 
-		escribir_lento("Follow the white rabbit...", delay=0.08)
+		self.escribir_lento("Follow the white rabbit...", delay=0.08)
 		time.sleep(5)
 		os.system("cls" if os.name == "nt" else "clear")
 
-		escribir_lento("Knock Knock " + usuario_pc, delay=0.08)
+		self.escribir_lento("Knock Knock " + usuario_pc, delay=0.08)
 		time.sleep(5)
 		os.system("cls" if os.name == "nt" else "clear")
 
